@@ -7,7 +7,7 @@ class Solution:
             max_reach = self.get_next_reach(nums[prev+1:curr+1])
             dp.append(max_reach)
             prev = curr
-            curr += dp[-1]
+            curr += max_reach
             if curr == prev: return 0
         return len(dp)
         
