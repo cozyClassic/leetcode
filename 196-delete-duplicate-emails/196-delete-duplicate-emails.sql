@@ -1,11 +1,9 @@
-delete 
-from Person
-where id not in 
-    (
-    select id 
-    from
-        (select min(id) as Id,Email
-        from Person
-        group by Email
-        order by Id) as P2
-    )
+# Please write a DELETE statement and DO NOT write a SELECT statement.
+# Write your MySQL query statement below
+DELETE P1
+FROM
+    Person AS P1,
+    Person AS P2
+WHERE
+    P1.email = P2.email
+    AND P1.id > P2.id
