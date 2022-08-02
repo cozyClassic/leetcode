@@ -7,7 +7,7 @@ class Solution:
         small_elements[(0,0)] = matrix[0][0]
         visited = [[False] * n for _ in range(n)]
         
-        def pop_smallest_element(small_elements):
+        def pop_smallest_element():
             min_value = sys.maxsize
             small_coords = (-1,-1)
             for coords, value in small_elements.items():
@@ -19,10 +19,10 @@ class Solution:
             x,y = small_coords
             visited[x][y] = True
             
-            return small_elements, small_coords
+            return small_coords
     
         for i in range(k):
-            small_elements, coords = pop_smallest_element(small_elements)
+            coords = pop_smallest_element()
             x, y = coords
             if x < n - 1 and not visited[x+1][y]:
                 small_elements[(x+1,y)] = matrix[x+1][y]
