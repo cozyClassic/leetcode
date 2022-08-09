@@ -4,8 +4,8 @@ class Solution:
         dp = {x:1 for x in arr}
         
         for i in range(len(arr)):
+            curr = arr[i]
             for j in range(i):
-                curr = arr[i]
                 prev1 = arr[j]
                 if curr/prev1 in dp:
                     prev2 = arr[i]//arr[j]
