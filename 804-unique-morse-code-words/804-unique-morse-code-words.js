@@ -3,20 +3,21 @@
  * @return {number}
  */
 var uniqueMorseRepresentations = function(words) {
-    let mors = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
-    let alphas = "abcdefghijklmnopqrstuvwxyz"
-    let hashs = {}
+    let m = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."][Symbol.iterator]();
+    let a = "abcdefghijklmnopqrstuvwxyz"[Symbol.iterator]();
+    let hashs = {};
+    
     for (let i=0; i<26; i++) {
-        hashs[alphas[i]] = mors[i]
+        hashs[a.next().value] = m.next().value
     }
     results = new Set()
     
     for (const word of words) {
-        let result = ""
+        let result = []
         for (const w of word) {
-            result += hashs[w]
+            result[result.length] = hashs[w]
         }
-        results.add(result)
+        results.add(result.join(""))
     }
     return results.size
 };
