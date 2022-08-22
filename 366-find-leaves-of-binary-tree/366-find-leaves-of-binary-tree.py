@@ -10,17 +10,19 @@ class Solution:
         return node.left is None and node.right is None
 
     def DFS(self, node:TreeNode):
-        if node.left and self.is_leaf(node.left):
-            self.leafs[-1].append(node.left.val)
-            node.left = None
-        elif node.left :
-            self.DFS(node.left)
+        if node.left :
+            if self.is_leaf(node.left):
+                self.leafs[-1].append(node.left.val)
+                node.left = None
+            else :
+                self.DFS(node.left)
         
-        if node.right and self.is_leaf(node.right):
-            self.leafs[-1].append(node.right.val)
-            node.right = None
-        elif node.right:
-            self.DFS(node.right)
+        if node.right :
+            if self.is_leaf(node.right):
+                self.leafs[-1].append(node.right.val)
+                node.right = None
+            else :
+                self.DFS(node.right)
 
     def findLeaves(self, root: Optional[TreeNode]) -> List[List[int]]:
         self.leafs = []
