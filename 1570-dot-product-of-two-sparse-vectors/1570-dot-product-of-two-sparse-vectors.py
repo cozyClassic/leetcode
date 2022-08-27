@@ -6,6 +6,8 @@ class SparseVector:
     def dotProduct(self, vec: 'SparseVector') -> int:
         _sum = 0
         for n1, n2 in zip(self.nums, vec.nums):
+            if 0 in (n1,n2):
+                continue
             _sum += n1*n2
         
         return _sum
