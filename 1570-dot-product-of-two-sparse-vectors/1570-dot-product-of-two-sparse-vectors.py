@@ -4,13 +4,7 @@ class SparseVector:
 
     # Return the dotProduct of two sparse vectors
     def dotProduct(self, vec: 'SparseVector') -> int:
-        _sum = 0
-        for n1, n2 in zip(self.nums, vec.nums):
-            if 0 in (n1,n2):
-                continue
-            _sum += n1*n2
-        
-        return _sum
+        return sum([n1*n2 for n1,n2 in zip(self.nums, vec.nums)])
 
 # Your SparseVector object will be instantiated and called as such:
 # v1 = SparseVector(nums1)
