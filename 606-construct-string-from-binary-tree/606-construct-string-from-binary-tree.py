@@ -1,22 +1,20 @@
 class Solution:
     def tree2str(self, root: Optional[TreeNode]) -> str:
-        result = ""
+        result = []
         def dfs(node):
             if not node :
                 return
-            nonlocal result
-            result += str(node.val)
+            result.append(str(node.val))
             
             if not node.left and not node.right:
                 return
 
-            result += "("
+            result.append("(")
             dfs(node.left)
-            result += ")"
+            result.append(")")
             if node.right :
-                result += "("
+                result.append("(")
                 dfs(node.right)
-                result+= ")"
-
+                result.append(")")
         dfs(root)
-        return result
+        return "".join(result)
