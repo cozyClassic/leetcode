@@ -4,19 +4,17 @@ class Solution:
         def dfs(node):
             self.result += str(node.val)
             
-            if node.left and node.right :
-                self.result += "("
-                dfs(node.left)
-                self.result += ")("
-                dfs(node.right)
-                self.result+= ")"
-                
-            elif node.left and not node.right :
+            if node.left :
                 self.result += "("
                 dfs(node.left)
                 self.result += ")"
                 
-            elif not node.left and node.right :
+                if node.right :
+                    self.result += "("
+                    dfs(node.right)
+                    self.result+= ")"
+            
+            if not node.left and node.right :
                 self.result += "()("
                 dfs(node.right)
                 self.result += ")"
