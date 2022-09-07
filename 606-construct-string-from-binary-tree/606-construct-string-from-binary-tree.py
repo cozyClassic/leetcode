@@ -3,23 +3,25 @@ class Solution:
         result = ""
         def dfs(node):
             nonlocal result
+            result += "("
             result += str(node.val)
             
             if node.left :
-                result += "("
                 dfs(node.left)
-                result += ")"
+                result+= ")"
                 
                 if node.right :
-                    result += "("
                     dfs(node.right)
                     result+= ")"
             
-            if not node.left and node.right :
-                result += "()("
+            elif node.right :
+                result += "()"
                 dfs(node.right)
                 result += ")"
+                
+            else:
+                return
     
         dfs(root)
         
-        return result
+        return result[1:]
