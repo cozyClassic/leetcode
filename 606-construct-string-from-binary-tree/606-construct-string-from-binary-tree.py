@@ -1,26 +1,25 @@
 class Solution:
-    result = ""
     def tree2str(self, root: Optional[TreeNode]) -> str:
+        result = ""
         def dfs(node):
-            self.result += str(node.val)
+            nonlocal result
+            result += str(node.val)
             
             if node.left :
-                self.result += "("
+                result += "("
                 dfs(node.left)
-                self.result += ")"
+                result += ")"
                 
                 if node.right :
-                    self.result += "("
+                    result += "("
                     dfs(node.right)
-                    self.result+= ")"
+                    result+= ")"
             
             if not node.left and node.right :
-                self.result += "()("
+                result += "()("
                 dfs(node.right)
-                self.result += ")"
-            
-            return dfs
+                result += ")"
     
         dfs(root)
         
-        return self.result
+        return result
