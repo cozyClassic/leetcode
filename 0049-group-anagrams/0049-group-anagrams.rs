@@ -10,9 +10,7 @@ impl Solution {
     pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
         let mut map:HashMap<Vec<char>, Vec<String>> = HashMap::new();
         for s in strs {
-            let key:Vec<char> = get_key(&s);
-            let values = map.entry(key).or_insert(vec![]);
-            values.push(s);
+            let values = map.entry(get_key(&s)).or_default().push(s);
         }
         map.into_values().collect()
     }
