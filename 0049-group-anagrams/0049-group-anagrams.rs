@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 fn get_key(string:&String) -> Vec<char> {
     let mut chars: Vec<char> = string.chars().collect();
-    chars.sort_by(|a, b| b.cmp(a));
+    chars.sort();
     chars
 }
 
