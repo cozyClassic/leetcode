@@ -12,6 +12,6 @@ impl Solution {
         for s in strs {
             let values = map.entry(get_key(&s)).or_insert(vec![]).push(s);
         }
-        map.into_values().collect()
+        map.values().cloned().collect()
     }
 }
