@@ -1,15 +1,17 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+from collections import deque
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        word = ""
+        Q = deque()
         while head:
-            word += str(head.val)
+            Q.append(head.val)
             head = head.next
 
-        if len(word)%2 == 0:
-            return word[:len(word)//2] == word[len(word)//2:][::-1]
-        return word[:len(word)//2] == word[len(word)//2+1:][::-1]
+        while Q:
+            try:
+                r = Q.pop()
+                l = Q.popleft()
+                if r != l:
+                    return False
+            except:
+                break
+        return True
