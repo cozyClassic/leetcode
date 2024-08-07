@@ -1,16 +1,16 @@
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
         result = Z = ListNode(None)
-        result.next = A = head
+        result.next = head
 
-        while A and A.next:
+        while head and head.next:
             # save pointer for C
-            B = A.next
+            B = head.next
             C = B.next
             # (Z) -> A -> B => (Z) -> B -> A
-            Z.next, B.next, A.next = B, A, C
+            Z.next, B.next, head.next = B, head, C
 
             # move pointer (Z) -> B -> A => (A>Z) -> (C->A)
-            Z, A = A, C
+            Z, head = head, C
 
         return result.next
