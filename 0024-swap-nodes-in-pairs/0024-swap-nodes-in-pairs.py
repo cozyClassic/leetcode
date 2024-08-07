@@ -11,7 +11,6 @@ class Solution:
             Z.next, B.next, A.next = B, A, C
 
             # move pointer (Z) -> B -> A => (A>Z) -> (C->A)
-            Z = A
-            A = C
+            Z, A = A, C
 
         return result.next
