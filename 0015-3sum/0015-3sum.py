@@ -1,12 +1,12 @@
 class Solution:
     # nums2 is already sorted
     def twoSum(self, nums2, goal):
-        result = []
+        result = set()
         seen = set()
         for n in nums2:
             remain = goal - n
             if remain in seen:
-                result.append([n, remain])
+                result.add((-goal, n, remain))
             else:
                 seen.add(n)
         return result
@@ -18,6 +18,5 @@ class Solution:
         for i in range(len(nums)-2):
             n1 = nums[i]
             combs = self.twoSum(nums[i+1:], -n1)
-            for c in combs:
-                result.add(tuple([n1] + c))
+            result = result.union(combs)
         return result
