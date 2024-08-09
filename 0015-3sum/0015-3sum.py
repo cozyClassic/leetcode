@@ -1,25 +1,23 @@
 class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
-        nums.sort()
+    # nums2 is already sorted
+    def twoSum(self, nums2, goal):
         result = []
-        for i in range(len(nums)-2) :
-            if i>0 and nums[i] == nums[i-1] :
-                continue
-            left        = i+1
-            right       = len(nums) - 1
-            
-            while left < right :
-                _sum = nums[i] + nums[left] + nums[right]
-                if _sum < 0 :
-                    left += 1
-                elif _sum > 0 :
-                    right -= 1
-                elif _sum == 0 :
-                    result.append([nums[i],nums[left],nums[right]])
-                    while left < right and nums[left] == nums[left + 1]:
-                        left += 1
-                    while left < right and nums[right] == nums[right - 1]:
-                        right -= 1
-                    left += 1
-                    right -= 1
+        seen = set()
+        for n in nums2:
+            remain = goal - n
+            if remain in seen:
+                result.append([n, remain])
+            else:
+                seen.add(n)
+        return result
+
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        # i,j,k는 모두 달라야 함. 합은 0이어야 함
+        nums.sort()
+        result = set()
+        for i in range(len(nums)-2):
+            n1 = nums[i]
+            combs = self.twoSum(nums[i+1:], -n1)
+            for c in combs:
+                result.add(tuple([n1] + c))
         return result
