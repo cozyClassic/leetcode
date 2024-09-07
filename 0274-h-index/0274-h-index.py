@@ -4,13 +4,10 @@ class Solution:
             return min(1, citations[0])
 
         citations.sort(reverse=True)
-        
-        L = len(citations)//2
-        med = citations[L]
 
-        result = 0
+        result = 0        
 
-        for i in range(L+1):
+        for i in range(len(citations)):
             curr = min(i+1, citations[i])
             result = max(curr, result)
         
