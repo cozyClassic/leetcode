@@ -4,8 +4,7 @@ class CustomStack:
         self.stack = []
 
     def push(self, x: int) -> None:
-        if len(self.stack) == self.maxSize: return
-        self.stack.append(x)
+        if len(self.stack) < self.maxSize: self.stack.append(x)
 
     def pop(self) -> int:
         try:
