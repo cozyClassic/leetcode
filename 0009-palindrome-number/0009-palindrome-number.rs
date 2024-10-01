@@ -3,7 +3,12 @@ impl Solution {
         if x < 0 { 
             return false
         }
-        return x.to_string().chars().rev().eq(x.to_string().chars());
-        
+        let mut _x = x;
+        let mut y = 0;
+        while _x > 0 {
+            y = y * 10 + _x % 10;
+            _x /= 10;
+        }
+        x == y
     }
 }
