@@ -1,15 +1,14 @@
-from collections import Counter
 class Solution:
-    def dividePlayers(self, skill: List[int]) -> int:
-        n = len(skill)
+    def dividePlayers(self, s: List[int]) -> int:
+        if len(s) == 2: return s[0] * s[1]
 
-        target = 2 * sum(skill) / n
-        if target % 1 != 0: return -1
-        counts = Counter(skill)
-        ans = 0
-        for s, c in counts.items():
-            if target - s not in counts: return -1
-            if c != counts[target - s]: return -1
-            total_chem = int(s * (target - s) * c)
-            ans += total_chem
-        return ans >> 1
+        s.sort()
+        r = 0
+        d = s[0] + s[-1]
+        L = len(s) - 1
+
+        for i in range((L+1)//2):
+            if s[i] + s[L-i] != d: return -1
+            r += s[i] * s[L-i]
+
+        return r
