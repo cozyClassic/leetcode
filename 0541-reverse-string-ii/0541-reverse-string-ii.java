@@ -10,10 +10,10 @@ class Solution {
                 x ++;
                 y --;
             }
-            int z = i + k;
-            while (z < i + 2 * k && z < s.length()) {
-                chars[z] = s.charAt(z);
-                z ++;
+        }
+        for (int i=0; i < s.length(); i ++) {
+            if (chars[i] == 0) {
+                chars[i] = s.charAt(i);
             }
         }
         return new String(chars);
